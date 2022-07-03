@@ -13,7 +13,6 @@ class TweetPreprocessor():
                  stemmer=PorterStemmer()):
         self.tokenizer = tokenizer
         self.stemmer = stemmer
-        self.clean_tokens = []
         self.stopwords = sw.words('english')
 
     def preprocess(self, tweet):
@@ -26,11 +25,12 @@ class TweetPreprocessor():
         # Remove hashtags
         tweet = re.sub(r'#', '', tweet)
         tokens = self.tokenizer.tokenize(tweet)
+        clean_tokens = []
 
         for token in tokens:
             if (token not in self.stopwords and
                 token not in string.punctuation):
                     stem = self.stemmer.stem(token)
-                    self.clean_tokens.append(stem)
+                    clean_tokens.append(stem)
 
-        return self.clean_tokens
+        return clean_tokens
