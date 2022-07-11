@@ -13,7 +13,7 @@ from modules.utils import get_word_frequencies
 nltk.download('twitter_samples')
 
 
-def main():
+def tweet_sentiment():
     positive_tweets = twitter_samples.strings('positive_tweets.json')
     negative_tweets = twitter_samples.strings('negative_tweets.json')
     print('Positive tweets: ', len(positive_tweets))
@@ -109,4 +109,4 @@ def lookup(freqs, word, label):
 
 
 if __name__ == '__main__':
-    main()  # temp
+    tweet_sentiment()

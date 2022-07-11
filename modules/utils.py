@@ -1,14 +1,14 @@
 import numpy as np
 
 
-def get_word_frequencies(tweets, labels, preprocessor):
-    """Count the number of times each word in each tweet is associated to
+def get_word_frequencies(docs, labels, preprocessor):
+    """Count the number of times each word in each doc is associated to
        positive (1) or negative (0) sentiment"""
     ys_list = np.squeeze(labels).tolist()
     freqs = {}
 
-    for y, tweet in zip(ys_list, tweets):
-        for token in preprocessor.preprocess(tweet):
+    for y, doc in zip(ys_list, docs):
+        for token in preprocessor.preprocess(doc):
             pair = (token, y)
             if pair in freqs:
                 freqs[pair] += 1
